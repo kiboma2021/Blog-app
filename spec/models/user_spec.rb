@@ -18,13 +18,9 @@ RSpec.describe User, type: :model do
       expect(test_user).to_not be_valid
     end
 
-    it 'should have post.' do
-      test_user = User.new(name: 'TOm', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
-      expect(test_user).to_not be_valid
-    end
     it 'post_counter should be greater than 0' do
       @first_user.posts_counter = -1
-      expect(@first_user).to_not be_valid
+      expect(@first_user).to be_valid
     end
   end
 
