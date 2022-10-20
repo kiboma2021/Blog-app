@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: 'author_id'
 
   validates :name, presence: true
-  
+
   def recent_post
     Post.where(author: self).order(created_at: :desc).limit(3)
   end
