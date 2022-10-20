@@ -1,3 +1,6 @@
 class Post < ApplicationRecord
+    belongs_to :author, class_name: 'User'
+    has_many :comments, dependent: :delete_all
+    has_many :likes, dependent: :delete_all
 end
   
