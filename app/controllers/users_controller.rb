@@ -1,10 +1,7 @@
 class UsersController < ApplicationController
-  def likes
-  end
+  def likes; end
 
-  def posts
-  end
+  def posts; end
 
-  def comments
-  end
+  def comments; end
 end
