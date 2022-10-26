@@ -1,1 +1,23 @@
-<p>Index of Users list</p>
+<h1 class='text-5xl my-4'>Users</h1>
+<h3>Select one to see there detailed post.</h3>
+
+<div class='flex flex-col gap-8 mt-8'>
+  <% @users.each do |user|%>
+      <div class= 'flex gap-8 items-center' id="<%= user.id %>">
+        <%= link_to user_path(id: user.id) do %>
+          <div class= 'flex gap-8 items-center'>
+            <img src="<%= user.photo %>" alt="<%= user.name %>" class='w-32 h-32 rounded-full'>
+            <h2 class=' text-3xl'>
+              <%= user.name %>
+            </h2>
+            <p>
+              <%= user.posts_counter %>
+              posts
+            </p>
+          </div>
+
+        <%end %>
+      </div>
+
+  <% end %>
+</div>
