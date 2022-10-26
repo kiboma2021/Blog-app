@@ -1,1 +1,49 @@
-<p>Specific user posts </p>
+<div class= ' flex flex-col gap-4 mt-4'>
+  <div class='flex flex-col gap-4 shadow-md shadow-slate-400 p-4 rounded-md'>
+    <div class='flex flex-col'>
+      <h2 class=' text-3xl font-bold mb-8 '>Author: <%= @post.author.name %></h2>
+      <div class='flex flex-col gap-4'>
+        <h2 class=' text-3xl'><%= @post.title %></h2>
+        <p class=' pl-8'><%= @post.text %></p>
+      </div>
+      <div class='flex gap-4 self-end bg-orange-200 p-4 rounded-md'>
+        <p><%= @post.comments_counter %> Comments</p>
+        <p><%= @post.likes_counter %> Likes</p>
+      </div>
+      <div class="flex gap-8 self-end">
+        <div class="self-end shadow-md shadow-slate-400 p-4 rounded-md mt-4">
+          <%= button_to "Add Comment", new_user_post_comment_path(user_id: @post.author.id, post_id: @post.id), method:'get' %>
+        </div>
+        <div class="self-end shadow-md shadow-slate-400 p-4 rounded-md mt-4">
+          <%= button_to "Like Post", user_post_likes_path(user_id: @post.author.id, post_id: @post.id), method:'post' %>
+        </div>
+        <% if can? :destroy, @post %>
+          <div class="self-end shadow-md shadow-slate-400 p-4 rounded-md mt-4">
+            <%= button_to "Delete Post", user_post_path(user_id: @post.author.id, post_id: @post.id), method: :delete %>
+          </div>
+        <%end %>
+      </div>
+
+    </div>
+  </div>
+
+  <div class='flex flex-col gap-8 my-8 shadow-md shadow-slate-400 p-4 rounded-md'>
+  <h2 class=' text-2xl'>Comments</h2>
+    <% @comments.each do |comment| %>
+      <div class=' flex gap-4 items-center'>
+        <div class=' flex gap-4 justify-start items-center px-4 border-r-4'>
+          <img src="<%= comment.author.photo %>" alt="<%= comment.author.name %>" class='w-16 h-16 rounded-full'>
+          <p><%= comment.author.name %></p>
+        </div>
+        <div class='pl-8'>
+          <p><%= comment.text %></p>
+        </div>
+        <% if can? :destroy, comment %>
+          <div class="self-end shadow-md shadow-slate-400 p-4 rounded-md mt-4">
+            <%= button_to "Delete Comment", user_post_comment_path(user_id: @post.author.id, post_id: @post.id, id: comment.id), method: :delete %>
+          </div>
+        <%end %>
+      </div>
+    <% end %>
+  </div>
+</div>
