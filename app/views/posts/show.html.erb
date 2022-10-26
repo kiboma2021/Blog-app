@@ -1,1 +1,31 @@
-<p>Specific user posts </p>
+<div class="card m-3">
+  <div class="card-body">
+    <h5 class="card-title"><%= @post.title %> by <%= @post.author.name %></h5>
+   <p class="card-text"><%= @post.text %></p>
+
+  </div>
+</div>
+<div class="card m-3">
+  <div class="card-body">
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col">Author</th>
+            <th scope="col">Comment</th>
+            <th scope="col"></th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <% @comms.each do |comment| %>
+            <tr>
+              <td><%= comment.author.name %></td>
+              <td><%= comment.text %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>
+<br/><br/>
+
