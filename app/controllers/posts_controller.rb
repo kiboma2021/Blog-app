@@ -10,12 +10,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by(id: params[:id], author_id: params[:user_id])
-    @comments = @post.most_recent_comments
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @post.comments }
-    end
+    @post = Post.find(params[:id])
+    @comms = @post.comments.includes(:author)
   end
 end
