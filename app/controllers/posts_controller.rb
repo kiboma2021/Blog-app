@@ -37,10 +37,8 @@ class PostsController < ApplicationController
           redirect_to user_url(author)
         else
           flash.now[:error] = 'Error: Post could not be created.'
-          render :new, locals: { post: }, status: 422
         end
       end
     end
   end
-
 end
