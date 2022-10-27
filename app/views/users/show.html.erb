@@ -11,7 +11,10 @@
     <h2 class='text-2xl'>Bio</h2>
     <p><%= @user.bio %></p>
   </div>
-
+  <div> 
+    <%= link_to 'Create new post', new_user_post_url(@user) %>
+  </div>
+  
   <div class=' flex flex-col gap-8'>
     <%@recent_posts.each_with_index do |post, idx|%>
       <%= link_to user_post_path(user_id: @user.id, id: post.id) do %>
