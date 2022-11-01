@@ -1,0 +1,31 @@
+require 'rails_helper'
+
+RSpec.describe 'posts #show', type: :feature do
+  before :each do
+    @user = User.create(
+        name: 'Benson',
+        photo: 'https://www.pexels.com/photo/cottages-in-the-middle-of-beach-753626/',
+        bio: "I'm finding it hard coping with ruby on rails",
+        posts_counter: 0
+        )
+    Post.create(author: @user, title: 'Title', text: 'Text', comments_counter: 0, likes_counter: 0)
+    Post.create(author: @user, title: 'Title2', text: 'Text2', comments_counter: 0, likes_counter: 0)
+    Post.create(author: @user, title: 'Title3', text: 'Text3', comments_counter: 0, likes_counter: 0)
+    @post = Post.create(author: @user, title: 'Title4', text: 'Text4', comments_counter: 0, likes_counter: 0)
+    User.create(
+      name: '1st',
+      photo: 'https://www.pexels.com/photo/cottages-in-the-middle-of-beach-753626/',
+      bio: "I'm finding it hard coping with ruby on rails",
+      posts_counter: 0
+    )
+    visit "/users/#{@user.id}/posts/#{@post.id}"
+  end
+
+  describe 'post show page' do
+    it 'shows the post\'s title' do
+      expect(page).to have_content(@post.title)
+    end
+
+
+  end
+end
