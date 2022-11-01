@@ -35,5 +35,11 @@ RSpec.describe 'posts #index', type: :feature do
     expect(page).to have_content(@post.text)
   end
 
+  it 'displays the first comments in a post' do
+    comments = @post.comments
+    comments.each do |comment|
+      expect(page).to have_content(comment.text)
+    end
+  end
   
 end
