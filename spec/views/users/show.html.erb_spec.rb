@@ -15,7 +15,7 @@ RSpec.describe 'users #show', type: :feature do
     User.create(
       name: 'Joe',
       photo: 'https://www.pexels.com/photo/cottages-in-the-middle-of-beach-753626/',
-      bio: "Sleepy Joe",
+      bio: 'Sleepy Joe',
       posts_counter: 0
     )
     visit "/users/#{@user.id}"
@@ -44,5 +44,4 @@ RSpec.describe 'users #show', type: :feature do
     click_button('See all posts')
     expect(current_path).to eq("/users/#{@user.id}/posts")
   end
-
 end

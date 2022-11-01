@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe 'posts #show', type: :feature do
   before :each do
     @user = User.create(
-        name: 'Benson',
-        photo: 'https://www.pexels.com/photo/cottages-in-the-middle-of-beach-753626/',
-        bio: "I'm finding it hard coping with ruby on rails",
-        posts_counter: 0
-        )
+      name: 'Benson',
+      photo: 'https://www.pexels.com/photo/cottages-in-the-middle-of-beach-753626/',
+      bio: "I'm finding it hard coping with ruby on rails",
+      posts_counter: 0
+    )
     Post.create(author: @user, title: 'Title', text: 'Text', comments_counter: 0, likes_counter: 0)
     Post.create(author: @user, title: 'Title2', text: 'Text2', comments_counter: 0, likes_counter: 0)
     Post.create(author: @user, title: 'Title3', text: 'Text3', comments_counter: 0, likes_counter: 0)
@@ -25,29 +25,29 @@ RSpec.describe 'posts #show', type: :feature do
     it 'shows the post\'s title' do
       expect(page).to have_content(@post.title)
     end
-    
+
     it 'shows who wrote the post' do
-        expect(page).to have_content(@user.name)
+      expect(page).to have_content(@user.name)
     end
 
     it 'shows how many comments there are on a post' do
-        expect(page).to have_content(@post.comments.count)
-      end
+      expect(page).to have_content(@post.comments.count)
+    end
 
-      it 'shows how many likes there are on a post' do
-        expect(page).to have_content(@post.likes.count)
+    it 'shows how many likes there are on a post' do
+      expect(page).to have_content(@post.likes.count)
+    end
+
+    it 'shows the post body' do
+      expect(page).to have_content(@post.text)
+    end
+
+    it 'shows all comments and the author name' do
+      comments = @post.comments
+      comments.each do |comment|
+        expect(page).to have_content(comment.author.name)
+        expect(page).to have_content(comment.text)
       end
-  
-      it 'shows the post body' do
-        expect(page).to have_content(@post.text)
-      end
-  
-      it 'shows all comments and the author name' do
-        comments = @post.comments
-        comments.each do |comment|
-          expect(page).to have_content(comment.author.name)
-          expect(page).to have_content(comment.text)
-        end
-      end
+    end
   end
 end

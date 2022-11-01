@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe 'posts #index', type: :feature do
   before :each do
     @user = User.create(
-        name: 'Ben',
-        photo: 'https://www.pexels.com/photo/cottages-in-the-middle-of-beach-753626/',
-        bio: "I'm finding it hard coping with ruby on rails",
-        posts_counter: 0
-        )
+      name: 'Ben',
+      photo: 'https://www.pexels.com/photo/cottages-in-the-middle-of-beach-753626/',
+      bio: "I'm finding it hard coping with ruby on rails",
+      posts_counter: 0
+    )
     Post.create(author: @user, title: 'Title', text: 'Text', comments_counter: 0, likes_counter: 0)
     Post.create(author: @user, title: 'Title2', text: 'Text2', comments_counter: 0, likes_counter: 0)
     Post.create(author: @user, title: 'Title3', text: 'Text3', comments_counter: 0, likes_counter: 0)
