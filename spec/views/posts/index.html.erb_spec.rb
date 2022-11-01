@@ -45,4 +45,8 @@ RSpec.describe 'posts #index', type: :feature do
   it 'displays the number of comments in a post' do
     expect(page).to have_content(@post.comments_counter)
   end
+
+  it 'displays the number of likes in a post' do
+    expect(page).to have_content(@post.likes_counter)
+  end
 end
