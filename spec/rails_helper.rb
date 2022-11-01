@@ -10,15 +10,10 @@ begin
 
   Capybara.register_driver :selenium_chrome do |app|
     Capybara::Selenium::Driver.new(app, browser: :chrome)
-   end
+  end
    
-   Capybara.javascript_driver = :selenium_chrome
+  Capybara.javascript_driver = :selenium_chrome
 
-
-#rescue ActiveRecord::PendingMigrationError => e
-#  puts e.to_s.strip
-#  exit 1
-#end
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -50,5 +45,6 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+end
 
 end
