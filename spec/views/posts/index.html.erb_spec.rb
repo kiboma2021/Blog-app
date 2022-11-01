@@ -41,5 +41,8 @@ RSpec.describe 'posts #index', type: :feature do
       expect(page).to have_content(comment.text)
     end
   end
-  
+
+  it 'displays the number of comments in a post' do
+    expect(page).to have_content(@post.comments_counter)
+  end
 end
