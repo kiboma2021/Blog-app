@@ -2,3 +2,4 @@ example_id                                     | status | run_time        |
 ---------------------------------------------- | ------ | --------------- |
 ./spec/views/users/index.html.erb_spec.rb[1:1] | passed | 0.03077 seconds |
 ./spec/views/users/index.html.erb_spec.rb[1:2] | passed | 0.3544 seconds  |
+./spec/views/users/show.html.erb_spec.rb[1:1]  | passed | 0.65483 seconds |
