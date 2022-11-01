@@ -25,7 +25,29 @@ RSpec.describe 'posts #show', type: :feature do
     it 'shows the post\'s title' do
       expect(page).to have_content(@post.title)
     end
+    
+    it 'shows who wrote the post' do
+        expect(page).to have_content(@user.name)
+    end
 
+    it 'shows how many comments there are on a post' do
+        expect(page).to have_content(@post.comments.count)
+      end
 
+      it 'shows how many likes there are on a post' do
+        expect(page).to have_content(@post.likes.count)
+      end
+  
+      it 'shows the post body' do
+        expect(page).to have_content(@post.text)
+      end
+  
+      it 'shows all comments and the author name' do
+        comments = @post.comments
+        comments.each do |comment|
+          expect(page).to have_content(comment.author.name)
+          expect(page).to have_content(comment.text)
+        end
+      end
   end
 end
