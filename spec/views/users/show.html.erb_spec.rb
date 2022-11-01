@@ -34,6 +34,10 @@ RSpec.describe 'users #show', type: :feature do
       expect(page).to have_content(post.title)
       expect(page).to have_content(post.text)
     end
-  end  
+  end
+
+  it 'Contains a button that shows all posts' do
+    expect(page).to have_content('See all posts')
+  end
 
 end
