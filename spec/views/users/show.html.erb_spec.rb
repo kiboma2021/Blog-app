@@ -28,5 +28,12 @@ RSpec.describe 'users #show', type: :feature do
     expect(page).to have_content(@user.bio)
   end
 
+  it 'displays the users first three posts' do
+    recent_posts = @user.recent_post
+    recent_posts.each do |post|
+      expect(page).to have_content(post.title)
+      expect(page).to have_content(post.text)
+    end
+  end  
 
 end
