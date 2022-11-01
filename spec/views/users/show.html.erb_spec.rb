@@ -40,4 +40,9 @@ RSpec.describe 'users #show', type: :feature do
     expect(page).to have_content('See all posts')
   end
 
+  it 'redirects the user to the complete posts list' do
+    click_button('See all posts')
+    expect(current_path).to eq("/users/#{@user.id}/posts")
+  end
+
 end
