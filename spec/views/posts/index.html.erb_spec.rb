@@ -26,8 +26,14 @@ RSpec.describe 'posts #index', type: :feature do
     expect(page).to have_css("img[src*='#{@user.photo}']")
     expect(page).to have_content(@user.posts_counter.to_s)
   end
-  
+
   it 'can display a post title' do
     expect(page).to have_content(@post.title)
   end
+
+  it 'can display a post body' do
+    expect(page).to have_content(@post.text)
+  end
+
+  
 end
