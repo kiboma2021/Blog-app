@@ -25,5 +25,10 @@ RSpec.describe 'users #index', type: :feature do
         expect(page).to have_content(user.posts_counter)
       end
     end
+
+    it 'When a user is clicked, it redirected to that user show page' do
+        click_link(@users.first.name.to_s)
+        expect(page).to have_content('Bio')
+      end
   
   end
