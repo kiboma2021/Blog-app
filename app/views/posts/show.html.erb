@@ -1,7 +1,8 @@
 <div class="card m-3">
   <div class="card-body">
     <h5 class="card-title"><%= @post.title %> by <%= @post.author.name %></h5>
-   <p class="card-text"><%= @post.text %></p>
+    <p>Number of comments: <%= @post.comments_counter %> - Number of likes: <%= @post.likes_counter %></p>
+    <p class="card-text"><%= @post.text %></p>
 
   </div>
 </div>

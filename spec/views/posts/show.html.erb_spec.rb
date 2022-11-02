@@ -12,12 +12,7 @@ RSpec.describe 'posts #show', type: :feature do
     Post.create(author: @user, title: 'Title2', text: 'Text2', comments_counter: 0, likes_counter: 0)
     Post.create(author: @user, title: 'Title3', text: 'Text3', comments_counter: 0, likes_counter: 0)
     @post = Post.create(author: @user, title: 'Title4', text: 'Text4', comments_counter: 0, likes_counter: 0)
-    User.create(
-      name: '1st',
-      photo: 'https://www.pexels.com/photo/cottages-in-the-middle-of-beach-753626/',
-      bio: "I'm finding it hard coping with ruby on rails",
-      posts_counter: 0
-    )
+
     visit "/users/#{@user.id}/posts/#{@post.id}"
   end
 
@@ -30,12 +25,12 @@ RSpec.describe 'posts #show', type: :feature do
       expect(page).to have_content(@user.name)
     end
 
-    it 'shows how many comments there are on a post' do
-      expect(page).to have_content(@post.comments.count)
+    it 'shows number of comments the post has' do
+      expect(page.body).to include('Number of comments')
     end
 
-    it 'shows how many likes there are on a post' do
-      expect(page).to have_content(@post.likes.count)
+    it 'shows number of likes the post has' do
+      expect(page.body).to include('Number of likes')
     end
 
     it 'shows the post body' do
