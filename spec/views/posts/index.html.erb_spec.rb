@@ -49,4 +49,15 @@ RSpec.describe 'posts #index', type: :feature do
   it 'displays the number of likes in a post' do
     expect(page).to have_content(@post.likes_counter)
   end
+
+
+
+
+  it 'redirects the user to the post show page' do
+    click_link(@post.title)
+    expect(current_path).to eq("/users/#{@user.id}/posts/#{@post.id}")
+  end
+
+
+  
 end
