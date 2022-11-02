@@ -51,8 +51,8 @@ RSpec.describe 'posts #index', type: :feature do
   end
 
 
-  it 'should have the section for pagination if there are more posts than fit on the view' do
-    expect(page).to have_text('Pagination')
+  it 'shows the Pagination button' do
+    expect(page.body).to include('Pagination')
   end
 
   it 'redirects the user to the post show page' do
