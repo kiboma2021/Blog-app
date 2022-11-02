@@ -50,7 +50,6 @@ RSpec.describe 'posts #index', type: :feature do
     expect(page).to have_content(@post.likes_counter)
   end
 
-
   it 'shows the Pagination button' do
     expect(page.body).to include('Pagination')
   end
@@ -59,7 +58,4 @@ RSpec.describe 'posts #index', type: :feature do
     click_link(@post.title)
     expect(current_path).to eq("/users/#{@user.id}/posts/#{@post.id}")
   end
-
-
-  
 end

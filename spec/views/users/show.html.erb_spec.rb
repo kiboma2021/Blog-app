@@ -12,7 +12,7 @@ RSpec.describe 'users #show', type: :feature do
     Post.create(author: @user, title: 'Title2', text: 'Text2', comments_counter: 0, likes_counter: 0)
     Post.create(author: @user, title: 'Title3', text: 'Text3', comments_counter: 0, likes_counter: 0)
     Post.create(author: @user, title: 'Title4', text: 'Text4', comments_counter: 0, likes_counter: 0)
-  
+
     visit "/users/#{@user.id}"
   end
 
