@@ -46,13 +46,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_03_162712) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.binary "photo"
-    t.text "bio"
-    t.integer "posts_counter"
+    t.binary "photo", default: "https://cdn-icons-png.flaticon.com/512/1159/1159797.png?w=740&t=st=1664309258~exp=1664309858~hmac=705ab1c49b60057e9dd8c91730e992f4b727b726801774c150f8916922ed039c"
+    t.text "bio", default: "I'm a new user"
+    t.integer "posts_counter", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "surname"
-    t.string "username"
+    t.string "surname", default: ""
+    t.string "username", default: ""
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
