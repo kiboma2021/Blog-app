@@ -16,6 +16,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = current_user
     @comms = @post.comments.includes(:author)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @post.comments }
+    end
   end
 
   def new

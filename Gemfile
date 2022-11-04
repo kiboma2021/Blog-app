@@ -9,6 +9,11 @@ gem 'rails', '~> 7.0.4'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
+# Authenticate user
+gem 'bcrypt', '~> 3.1.7'
+gem 'jwt'
+gem 'simple_command'
+
 # Use postgresql as the database for Active Record
 gem 'devise'
 gem 'pg', '~> 1.1'
