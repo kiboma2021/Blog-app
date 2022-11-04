@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+  before_action :authenticate_user!
+
   def index
     @user = User.find(params[:user_id])
     @posts = Post.where(author: @user)
@@ -39,6 +42,16 @@ class PostsController < ApplicationController
           flash.now[:error] = 'Error: Post could not be created.'
         end
       end
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    respond_to do |format|
+      format.html { redirect_to user_posts_url }
+      format.json { head :no_content }
     end
   end
 end
