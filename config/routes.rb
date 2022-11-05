@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount Rswag::Api::Engine => '/api-docs'
   devise_for :users
 
   post 'authenticate', to: 'authentication#authenticate'

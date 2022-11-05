@@ -13,6 +13,7 @@ gem 'sprockets-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 gem 'simple_command'
+gem 'rswag'
 
 # Use postgresql as the database for Active Record
 gem 'devise'
